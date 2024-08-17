@@ -9,8 +9,14 @@
     <h1>Tambah Proyek</h1>
 
     <form action="/index.php/welcome/proyekcreate" method="POST">
-        <label for="lokasi_id">Lokasi ID:</label><br>
-        <input type="number" id="lokasi_id" name="lokasi_id"><br><br>
+        <label for="lokasi_id">Lokasi:</label><br>
+		<select name="lokasi_id" id="lokasi_id">
+			<?php
+			for ($i = 0; $i < count($lokasis); $i++) {
+				echo "<option value='" . $lokasis[$i]->id . "'>" . $lokasis[$i]->nama_lokasi . ", " . $lokasis[$i]->kota . ", " . $lokasis[$i]->provinsi . ", " . $lokasis[$i]->negara . "</option>";
+			}
+			?>
+		</select><br><br>
 
         <label for="nama_proyek">Nama Proyek:</label><br>
         <input type="text" id="nama_proyek" name="nama_proyek"><br><br>

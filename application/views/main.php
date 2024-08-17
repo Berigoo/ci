@@ -84,5 +84,9 @@
 		echo "</tr>";
 	} ?>
 </table>
+<span>
+	<p><a href="/index.php/welcome/proyek">Tambah Proyek</a></p>
+	<p><a href="/index.php/welcome/lokasi">Tambah Lokasi</a></p>
+</span>
 </body>
 </html>

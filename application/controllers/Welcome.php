@@ -38,7 +38,12 @@ class Welcome extends CI_Controller {
 
 	public function proyek()
 	{
-        $this->load->view('proyek/insert');
+		$endpoint = '/lokasi';
+		$curl = curl_init($this->host . $endpoint);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$res = curl_exec($curl);
+		$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $this->load->view('proyek/insert', array('lokasis' => json_decode($res)));
 	}
     public function proyekcreate()
     {
