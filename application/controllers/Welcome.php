@@ -88,8 +88,13 @@ class Welcome extends CI_Controller {
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 		$res = curl_exec($curl);
 		$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+		$curl = curl_init($this->host . '/lokasi');
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+		$res2 = curl_exec($curl);
+		$httpcode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 		if($httpcode == 200){
-			$this->load->view('proyek/edit', array('data' => json_decode($res)));
+			$this->load->view('proyek/edit', array('data' => json_decode($res), 'alllokasi' => json_decode($res2)));
 		}else if($httpcode == 404){
 			$this->load->view('errors/error_404');
 		}else{
@@ -122,14 +127,14 @@ class Welcome extends CI_Controller {
 		curl_close($curl);
 
 		if($httpcode == 200){
-			echo "<h1>Lokasi berhasil diedit</h1><br>";
+			echo "<h1>Proyek berhasil diedit</h1><br>";
 			echo "<a href='/index.php'>Back</a>";
 		}else{
 			echo "<h1>Lokasi gagal diedit</h1><br>";
 			echo "<p style='color: red'>";
 			echo json_decode($res)->info;
 			echo "</p>";
-			echo "<a href='/index.php/welcome/lokasiedit/" . $data['id'] . "'>Back</a>";
+			echo "<a href='/index.php'>Back</a>";
 		}
 	}
 	public function proyekdelete($id)

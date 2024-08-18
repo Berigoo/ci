@@ -13,7 +13,7 @@
 		<select name="lokasi_id" id="lokasi_id">
 			<?php
 			for ($i = 0; $i < count($lokasis); $i++) {
-				echo "<option value='" . $lokasis[$i]->id . "'>" . $lokasis[$i]->nama_lokasi . ", " . $lokasis[$i]->kota . ", " . $lokasis[$i]->provinsi . ", " . $lokasis[$i]->negara . "</option>";
+				echo "<option value='" . $lokasis[$i]->id . "'>" . $lokasis[$i]->namaLokasi . ", " . $lokasis[$i]->kota . ", " . $lokasis[$i]->provinsi . ", " . $lokasis[$i]->negara . "</option>";
 			}
 			?>
 		</select><br><br>
